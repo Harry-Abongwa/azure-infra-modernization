@@ -1,0 +1,20 @@
+# OS / Editor
+.DS_Store
+.vscode/
+*.swp
+
+# Logs / outputs
+outputs/*
+!outputs/.gitkeep
+screenshots/*
+!screenshots/.gitkeep
+
+# Secrets (never commit)
+.env
+*.pem
+*.pfx
+*.key
+*.crt
+
+# PowerShell artifacts
+*.ps1xml
