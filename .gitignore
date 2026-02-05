@@ -1,20 +1,50 @@
+############################
 # OS / Editor
+############################
 .DS_Store
 .vscode/
 *.swp
 
-# Logs / outputs
+############################
+# Terraform (CRITICAL)
+############################
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+tfplan
+*.backup
+*.bak
+*.save
+
+############################
+# Logs / Outputs
+############################
 outputs/*
 !outputs/.gitkeep
+
+############################
+# Screenshots (tracked folder, images allowed)
+############################
 screenshots/*
 !screenshots/.gitkeep
+!screenshots/*.png
+!screenshots/*.jpg
+!screenshots/*.jpeg
 
-# Secrets (never commit)
+############################
+# Secrets (NEVER commit)
+############################
 .env
 *.pem
 *.pfx
 *.key
 *.crt
 
+############################
 # PowerShell artifacts
+############################
 *.ps1xml
+# Terraform backups
+**/*.bak.*
+**/*.save
