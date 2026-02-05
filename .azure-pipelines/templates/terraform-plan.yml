@@ -1,0 +1,12 @@
+steps:
+- task: TerraformInstaller@1
+  displayName: Install Terraform
+  inputs:
+    terraformVersion: $(terraformVersion)
+
+- script: |
+    set -e
+    cd "$(terraformWorkingDir)"
+    terraform init -backend=false
+    terraform plan
+  displayName: Terraform plan (safe, no backend)

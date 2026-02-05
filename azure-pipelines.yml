@@ -1,0 +1,31 @@
+trigger:
+  branches:
+    include:
+      - main
+      - master
+
+variables:
+  terraformVersion: '1.6.6'
+  terraformWorkingDir: 'infra/terraform/core'
+
+stages:
+- stage: Validate
+  displayName: Validate
+  jobs:
+  - job: validate
+    displayName: Terraform Validate
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - template: .azure-pipelines/templates/terraform-validate.yml
+
+- stage: Plan
+  displayName: Plan
+  dependsOn: Validate
+  jobs:
+  - job: plan
+    displayName: Terraform Plan
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - template: .azure-pipelines/templates/terraform-plan.yml

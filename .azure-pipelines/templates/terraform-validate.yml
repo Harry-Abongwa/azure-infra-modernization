@@ -1,0 +1,13 @@
+steps:
+- task: TerraformInstaller@1
+  displayName: Install Terraform
+  inputs:
+    terraformVersion: $(terraformVersion)
+
+- script: |
+    set -e
+    cd "$(terraformWorkingDir)"
+    terraform fmt -check -recursive
+    terraform init -backend=false
+    terraform validate
+  displayName: Terraform fmt, init (no backend), validate
